@@ -1,0 +1,36 @@
+{
+    "name": "kovalovme/image",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Maxim Kovalov",
+            "email": "kovalovme@gmail.com"
+        }
+    ],
+    "description": "",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-0": {
+            "App\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require": {
+        "php": "^8.0",
+        "intervention/image": "^2.5",
+        "illuminate/database": "^8.36",
+        "illuminate/support": "^8.36"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kovalovme\\Image\\Providers\\ImageServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0"
+    }
+}
