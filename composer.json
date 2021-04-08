@@ -10,12 +10,18 @@
     "description": "",
     "minimum-stability": "stable",
     "autoload": {
-        "psr-0": {
-            "App\\": "src/"
+        "psr-4": {
+            "Kovalovme\\Image\\": "src/",
+            "Kovalovme\\Image\\Database\\Factories\\": "database/factories/"
         },
         "files": [
             "src/helpers.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kovalovme\\Image\\Tests\\": "tests/"
+        }
     },
     "require": {
         "php": "^8.0",
@@ -23,14 +29,25 @@
         "illuminate/database": "^8.36",
         "illuminate/support": "^8.36"
     },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "Kovalovme\\Image\\Providers\\ImageServiceProvider"
-            ]
+                "Kovalovme\\Image\\ImageServiceProvider"
+            ],
+            "aliases": {
+                "Image": "Kovalovme\\Image\\Facade"
+            }
         }
     },
-    "require-dev": {
-        "orchestra/testbench": "^6.0"
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ],
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter"
     }
 }
